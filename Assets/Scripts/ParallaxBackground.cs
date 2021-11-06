@@ -11,6 +11,7 @@ public class ParallaxBackground : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
+        // Set up with the main camera
         cameraTransform = Camera.main.transform;
         lastCameraPosition = cameraTransform.position;
     }
@@ -18,8 +19,11 @@ public class ParallaxBackground : MonoBehaviour
     // Update is called once per frame
     private void LateUpdate()
     {
+        // Move relative to the camera
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
-        transform.position += deltaMovement;
+        float parallaxEffectMultiplier = .5f;
+
+        transform.position += deltaMovement * parallaxEffectMultiplier;
         lastCameraPosition = cameraTransform.position;
     }
 }
