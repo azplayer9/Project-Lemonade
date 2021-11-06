@@ -9,10 +9,12 @@ public class Player : MonoBehaviour
     private float speed = .05f;
     private float jump = 10f;
     public bool canJump = true;
+    public bool canPaint = false;
 
     void Start()
     {
         canJump = true;
+        canPaint = true;
     }
 
     void FixedUpdate()
