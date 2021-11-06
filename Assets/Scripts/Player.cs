@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        speed = .1f;
         canJump = true;
     }
 
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         {
             this.GetComponent<Rigidbody2D>().AddForce( new Vector2(0, jump), ForceMode2D.Impulse );
             canJump = false;
+            speed /= 2;
         }
 
         this.transform.position = pos;
@@ -35,9 +37,10 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (col.gameObject.tag == "Ground")
+        if (!canJump && col.gameObject.tag == "Ground")
         {
             canJump = true;
+            speed *= 2;
         }
     }
 }
