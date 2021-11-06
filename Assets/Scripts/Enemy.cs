@@ -7,13 +7,14 @@ public class Enemy : MonoBehaviour
 
     Player player;
     public bool stunned;
+    public bool moving;
 
     // Start is called before the first frame update
     void Start()
     {
         stunned = false;
         player = GameObject.FindObjectOfType<Player>();
-        InvokeRepeating("Act", 2.0f, 1.0f);
+        StartCoroutine("Act");
 
         // play some start animation? sfx?
     }
@@ -21,16 +22,28 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (moving)
+        {
+            
+        }
     }
 
     // called every 
-    void Act()
+    IEnumerator Act()
     {
-        if (!stunned){
-            if (player.canPaint){
+        if (!stunned)
+        {
+            moving = true;
+            if (player.canPaint)
+            {
                 
             }
         }
+        else 
+        {
+            moving = false;
+        }
+
+        yield return new WaitForSeconds(2.0f);
     }
 }
