@@ -9,13 +9,10 @@ public class Player : MonoBehaviour
     private float speed = .05f;
     private float jump = 10f;
     public bool canJump = true;
-    public bool canPaint = false;
 
     void Start()
     {
-        speed = .1f;
         canJump = true;
-        canPaint = false;
     }
 
     void FixedUpdate()
@@ -31,7 +28,6 @@ public class Player : MonoBehaviour
         {
             this.GetComponent<Rigidbody2D>().AddForce( new Vector2(0, jump), ForceMode2D.Impulse );
             canJump = false;
-            speed /= 2;
         }
 
         this.transform.position = pos;
@@ -39,10 +35,9 @@ public class Player : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        if (!canJump && col.gameObject.tag == "Ground")
+        if (col.gameObject.tag == "Ground")
         {
             canJump = true;
-            speed *= 2;
         }
     }
 }
