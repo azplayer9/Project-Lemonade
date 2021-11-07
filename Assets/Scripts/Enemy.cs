@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     public bool moving;
     public bool canAct;
     public bool hasBrush;
+    public bool invincible;
     
     public Vector3 target;
     public static float base_speed = 0.02f;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
         moving = false;
         canAct = true;
         hasBrush = false;
+        invincible = false;
 
         player = GameObject.FindObjectOfType<Player>();
         //StartCoroutine("Act");
@@ -55,7 +57,7 @@ public class Enemy : MonoBehaviour
                     this.transform.position += dist * speed; 
                     
                     Vector3 newD = this.transform.position - target;
-                    if (newD.sqrMagnitude < 0.05f)
+                    if (newD.sqrMagnitude <= 0.1f)
                     {
                         moving = false;
                     }
@@ -101,6 +103,17 @@ public class Enemy : MonoBehaviour
 
         stunned = false;
         canAct = true;
+    }
+
+    public IEnumerator SetInvincible()
+    {
+        if (invincible == false){
+            invincible = true;
+
+            yield return new WaitForSeconds(2.0f);
+
+            invincible = false;
+        }
     }
 
     void OnMouseDown()
