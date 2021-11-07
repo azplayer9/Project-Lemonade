@@ -8,12 +8,13 @@ public class SettingsManager : MonoBehaviour
     bool paused = false;
     public GameObject pauseMenu;
     public GameObject settingsObj;
+    public AudioSource clickSFX;
 
     // Start is called before the first frame update
     void Start()
     {
         paused = false;
-
+        Time.timeScale = 1;
         //pauseMenu = GameObject.Find("PauseMenu");
         //settingsObj = GameObject.Find("SettingsMenu");
 
@@ -26,7 +27,8 @@ public class SettingsManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && pauseMenu){
-            
+            // play sfx
+            clickSFX.Play();
             //if settings is active, hide settings
             if (settingsObj.activeSelf)
             {

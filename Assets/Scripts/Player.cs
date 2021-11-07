@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     private float jump = 10f;
     public bool canJump = true;
     public bool canPaint = false;
+    public Animator animator;
+    public SpriteRenderer spriteRend;
 
     void Start()
     {
@@ -24,12 +26,22 @@ public class Player : MonoBehaviour
                                     this.transform.position.y,
                                     this.transform.position.z);
 
-        
 
         if( canJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)) )
         {
             this.GetComponent<Rigidbody2D>().AddForce( new Vector2(0, jump), ForceMode2D.Impulse );
             canJump = false;
+        }
+
+        animator.SetFloat("Speed", Mathf.Abs(speed * axis));
+
+        if (axis < 0)
+        {
+            spriteRend.flipX = false;
+        }
+        else if (axis > 0)
+        {
+            spriteRend.flipX = true;
         }
 
         this.transform.position = pos;
