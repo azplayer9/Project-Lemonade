@@ -9,13 +9,14 @@ public class TitleScreen : MonoBehaviour
     public Button startButton;
     public GameObject mainMenu;
     public GameObject settingsObj;
+    public Animation fade;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        settingsObj = GameObject.Find("SettingsMenu");
+        //settingsObj = GameObject.Find("SettingsMenu");
         mainMenu = GameObject.Find("MainScreen");
+        fade = GameObject.Find("Fade").GetComponent<Animation>();
 
         if (settingsObj) settingsObj.SetActive(false);
     }
@@ -33,10 +34,11 @@ public class TitleScreen : MonoBehaviour
     //change scene to sample scene
     public void StartGame()
     {
+        Debug.Log("Start Game");
         SceneManager.LoadScene("SampleScene");
+        //Invoke("ChangeScene", 1.0f);
+        //fade.Play();
     }
-
-   
 
     // toggle settings
     public void ShowSettings()
