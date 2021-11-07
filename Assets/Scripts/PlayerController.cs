@@ -200,7 +200,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded && !isOnSlope && !isJumping) //if not on slope
         {
-            Debug.Log("This one");
+            //Debug.Log("This one");
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
         }
