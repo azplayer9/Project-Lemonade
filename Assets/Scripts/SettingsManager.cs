@@ -14,8 +14,8 @@ public class SettingsManager : MonoBehaviour
     {
         paused = false;
 
-        pauseMenu = GameObject.Find("PauseMenu");
-        settingsObj = GameObject.Find("SettingsMenu");
+        //pauseMenu = GameObject.Find("PauseMenu");
+        //settingsObj = GameObject.Find("SettingsMenu");
 
         if (pauseMenu) pauseMenu.SetActive(false);
         if (settingsObj) settingsObj.SetActive(false);
