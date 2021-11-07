@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
         {
             spriteRend.flipX = false;
         }
-        else
+        else if (axis > 0)
         {
             spriteRend.flipX = true;
         }
