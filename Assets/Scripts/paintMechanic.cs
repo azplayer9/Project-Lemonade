@@ -24,7 +24,7 @@ public class paintMechanic : MonoBehaviour
             Vector3 worldSpace = spriteMaskCamera.ScreenToWorldPoint(Input.mousePosition);
             worldSpace.z = 0;
             float distance = Vector3.Distance(worldSpace, playerLocation.position);
-            if (distance <= radius) {
+            if (distance <= radius && Time.timeScale == 1) {
                 GameObject temp_1 = Instantiate(spriteMask_1, worldSpace, Quaternion.identity);
                 GameObject temp_2 = Instantiate(spriteMask_2, worldSpace, Quaternion.identity);
 
