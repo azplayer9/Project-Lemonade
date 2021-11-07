@@ -63,7 +63,7 @@ public class Player : MonoBehaviour
             
             Object.Destroy(col.gameObject);
         }
-        
+        /*
         else if (col.gameObject.tag == "Enemy")
         {
             Enemy other = col.gameObject.GetComponent<Enemy>();
@@ -102,9 +102,10 @@ public class Player : MonoBehaviour
                 other.Act();
             }
 
-        }
+        }*/
     }
 
+    /*
     public IEnumerator SetInvincible()
     {
         if (invincible == false){
@@ -114,5 +115,5 @@ public class Player : MonoBehaviour
 
             invincible = false;
         }
-    }
+    }*/
 }

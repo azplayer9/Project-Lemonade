@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
                     this.transform.position += dist * speed; 
                     
                     Vector3 newD = this.transform.position - target;
-                    if (newD.sqrMagnitude <= 0.1f)
+                    if (newD.sqrMagnitude <= 1f)
                     {
                         moving = false;
                     }
@@ -70,20 +70,28 @@ public class Enemy : MonoBehaviour
     // called every 
     public IEnumerator Act()
     {
-        float delay = 2.0f;
-        if (!stunned)
+        
+        float delay = Random.Range(0, 1f);
+
+        yield return new WaitForSeconds(delay);
+        /*if (!stunned)
         {
             moving = true;
 
             if (player.canPaint)
-            {
-                this.speed = base_speed * 2;
-                target = new Vector3(player.transform.position.x + Random.Range(-1f, 1f),
-                                     player.transform.position.y + Random.Range(-1f, 1f),
-                                     player.transform.position.z 
-                                     );
-                delay = Random.Range(.5f, 1.5f); // shorter delay when chasing player
-            }
+            {*/
+                //this.speed = base_speed * 2;
+        target = new Vector3(   player.transform.position.x + Random.Range(-1.5f, 1.5f),
+                                player.transform.position.y + Random.Range(-1.5f, 1.5f),
+                                player.transform.position.z 
+                            );
+
+        yield return new WaitForSeconds(2-delay + 0.5f); // shorter delay when chasing player
+        
+        canAct = true;
+    }
+            /*}
+
             else
             {
                 this.speed = base_speed;
@@ -130,4 +138,5 @@ public class Enemy : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.yellow;
         }
     }
+    */
 }
