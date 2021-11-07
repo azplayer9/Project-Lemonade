@@ -1414,8 +1414,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ee3699da18feeb4083f7c5b9b29c53a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteMask_1: {fileID: 1350874695}
-  spriteMask_2: {fileID: 681442292}
+  spriteMask_1: {fileID: 8933906883108317952, guid: 3ce2b60b5e2428f40be35bb64fa84c0b, type: 3}
+  spriteMask_2: {fileID: 4942796113246932275, guid: c5ae7c3174dd32f4585b7f45b4db2868, type: 3}
   spriteMaskCamera: {fileID: 519420031}
   playerLocation: {fileID: 552966011}
   radius: 40
