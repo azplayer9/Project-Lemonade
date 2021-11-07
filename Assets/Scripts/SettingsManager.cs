@@ -30,7 +30,7 @@ public class SettingsManager : MonoBehaviour
             // play sfx
             clickSFX.Play();
             //if settings is active, hide settings
-            if (settingsObj.activeSelf)
+            if (settingsObj && settingsObj.activeSelf)
             {
                 HideSettings();
             }
@@ -56,7 +56,8 @@ public class SettingsManager : MonoBehaviour
 
         if(!paused)
         {
-            settingsObj.SetActive(false);
+            if (settingsObj)    settingsObj.SetActive(false);
+            
             Time.timeScale = 1; // restore timescale
         }
         else {
