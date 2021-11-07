@@ -9,10 +9,14 @@ public class Player : MonoBehaviour
     private float speed = .05f;
     private float jump = 10f;
     public bool canJump = true;
+    public bool canPaint = false;
+    public Animator animator;
+    public SpriteRenderer spriteRend;
 
     void Start()
     {
         canJump = true;
+        canPaint = false;
     }
 
     void FixedUpdate()
@@ -22,12 +26,22 @@ public class Player : MonoBehaviour
                                     this.transform.position.y,
                                     this.transform.position.z);
 
-        
 
         if( canJump && (Input.GetKeyDown(KeyCode.Space) || Input.GetKey(KeyCode.Space)) )
         {
             this.GetComponent<Rigidbody2D>().AddForce( new Vector2(0, jump), ForceMode2D.Impulse );
             canJump = false;
+        }
+
+        animator.SetFloat("Speed", Mathf.Abs(speed * axis));
+
+        if (axis < 0)
+        {
+            spriteRend.flipX = false;
+        }
+        else
+        {
+            spriteRend.flipX = true;
         }
 
         this.transform.position = pos;
@@ -38,6 +52,14 @@ public class Player : MonoBehaviour
         if (col.gameObject.tag == "Ground")
         {
             canJump = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Bucket")
+        {
+            this.canPaint = true;
         }
     }
 }

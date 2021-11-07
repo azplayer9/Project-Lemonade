@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Bucket
   layers:
   - Default
   - TransparentFX
@@ -12,8 +13,8 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - FogOfWarMain
+  - FogOfWarSec
   - 
   - 
   - 
@@ -41,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: FogOfWar
+    uniqueID: 3187935633
     locked: 0
