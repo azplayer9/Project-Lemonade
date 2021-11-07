@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         canJump = true;
-        canPaint = true;
+        canPaint = false;
     }
 
     void FixedUpdate()
@@ -40,6 +40,14 @@ public class Player : MonoBehaviour
         if (col.gameObject.tag == "Ground")
         {
             canJump = true;
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Bucket")
+        {
+            this.canPaint = true;
         }
     }
 }
