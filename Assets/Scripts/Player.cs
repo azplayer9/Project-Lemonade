@@ -6,19 +6,20 @@ using UnityEngine.Events;
 public class Player : MonoBehaviour
 {    
 
-    private float speed = .05f;
-    private float jump = 10f;
-    public bool canJump = true;
+    //private float speed = .05f;
+    //private float jump = 10f;
+    //public bool canJump = true;
     public bool canPaint = false;
-    public Animator animator;
-    public SpriteRenderer spriteRend;
+    //public Animator animator;
+    //public SpriteRenderer spriteRend;
 
     void Start()
     {
-        canJump = true;
+        //canJump = true;
         canPaint = false;
     }
 
+    /*
     void FixedUpdate()
     {
         var axis = Input.GetAxisRaw("Horizontal");
@@ -45,21 +46,40 @@ public class Player : MonoBehaviour
         }
 
         this.transform.position = pos;
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.tag == "Ground")
-        {
-            canJump = true;
-        }
-    }
+    }*/
 
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Bucket")
         {
             this.canPaint = true;
+
+            foreach (Enemy e in FindObjectsOfType<Enemy>())
+            {
+                e.active = true;
+            }
+            
+            Object.Destroy(col.gameObject);
+        }
+        
+        else if (col.gameObject.tag == "Enemy")
+        {
+            Enemy other = col.gameObject.GetComponent<Enemy>();
+            if(canPaint && !other.stunned)
+            {
+                canPaint = false;
+                other.hasBrush = true;
+                other.GetComponent<SpriteRenderer>().color = Color.red;
+                other.Act();
+            }
+            else if(other.hasBrush) 
+            {
+                other.stunned = true;
+                other.hasBrush = false;
+                other.GetComponent<SpriteRenderer>().color = Color.white;
+            
+                canPaint = true;
+            }
         }
     }
 }
