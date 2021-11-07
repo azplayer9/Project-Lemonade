@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class paintMechanic : MonoBehaviour
 {
-    [SerializeField] GameObject spriteMask;
+    [SerializeField] GameObject spriteMask_1;
+    [SerializeField] GameObject spriteMask_2;
     [SerializeField] Camera spriteMaskCamera;
     [SerializeField] Transform playerLocation;
     [SerializeField] float radius;
@@ -21,7 +22,8 @@ public class paintMechanic : MonoBehaviour
             worldSpace.z = 0;
             float distance = Vector3.Distance(worldSpace, playerLocation.position);
             if (distance <= radius) {
-                Instantiate(spriteMask, worldSpace, Quaternion.identity);
+                Instantiate(spriteMask_1, worldSpace, Quaternion.identity);
+                Instantiate(spriteMask_2, worldSpace, Quaternion.identity);
             }
         }
     }
