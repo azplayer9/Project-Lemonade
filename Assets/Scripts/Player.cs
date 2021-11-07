@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
             if(canPaint && !other.stunned)
             {
                 canPaint = false;
+                
                 other.hasBrush = true;
                 other.GetComponent<SpriteRenderer>().color = Color.red;
                 other.Act();
