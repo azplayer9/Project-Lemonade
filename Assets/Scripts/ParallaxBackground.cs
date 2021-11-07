@@ -5,7 +5,7 @@ using UnityEngine;
 public class ParallaxBackground : MonoBehaviour
 {
 
-    [SerializeField] private float parallaxEffectMultiplier;
+    [SerializeField] private Vector2 parallaxEffectMultiplier;
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
@@ -25,7 +25,8 @@ public class ParallaxBackground : MonoBehaviour
         Vector3 deltaMovement = cameraTransform.position - lastCameraPosition;
         //float parallaxEffectMultiplier = .5f;
 
-        transform.position += deltaMovement * parallaxEffectMultiplier;
+        transform.position += new Vector3(deltaMovement.x * parallaxEffectMultiplier.x, 
+            deltaMovement.y * parallaxEffectMultiplier.y);
         lastCameraPosition = cameraTransform.position;
     }
 }
