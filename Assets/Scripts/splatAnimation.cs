@@ -8,7 +8,7 @@ public class splatAnimation : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Sprite[] splatImages;
     [SerializeField] float secondsPerFrame;
-    [SerializeField] SpriteMask currMask;
+    [SerializeField] SpriteRenderer currMask;
     bool done = false;
     int currImageIndex = 0;
     float timer = 0;
