@@ -1006,7 +1006,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.57776, y: 39.8, z: -21.6}
+  m_LocalPosition: {x: -35.96188, y: 39.8, z: -21.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1165,6 +1165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPaint: 0
+  invincible: 0
 --- !u!212 &552966010
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1310,7 +1311,7 @@ MonoBehaviour:
   animator: {fileID: 552966013}
   spriteRend: {fileID: 552966010}
   movementSpeed: 5
-  groundCheckRadius: 0.38
+  groundCheckRadius: 0.5
   jumpForce: 12
   slopeCheckDistance: 0.6
   maxSlopeAngle: 90
@@ -1736,6 +1737,7 @@ MonoBehaviour:
   moving: 0
   canAct: 0
   hasBrush: 0
+  invincible: 0
   target: {x: 0, y: 0, z: 0}
   speed: 0
 --- !u!212 &907413655
@@ -2386,6 +2388,7 @@ MonoBehaviour:
   moving: 0
   canAct: 0
   hasBrush: 0
+  invincible: 0
   target: {x: 0, y: 0, z: 0}
   speed: 0
 --- !u!212 &1484221660
@@ -2671,6 +2674,7 @@ MonoBehaviour:
   moving: 0
   canAct: 0
   hasBrush: 0
+  invincible: 0
   target: {x: 0, y: 0, z: 0}
   speed: 0
 --- !u!212 &1730738287

@@ -67,6 +67,7 @@ public class PlayerController : MonoBehaviour
         CheckGround();
         SlopeCheck();
         ApplyMovement();
+        animator.SetFloat("yVelocity", rb.velocity.y);
     }
 
     private void CheckInput()
@@ -85,12 +86,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             Jump();
+            animator.SetBool("Jump", true);
         }
 
     }
     private void CheckGround()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, whatIsGround);
+        animator.SetBool("Jump", !isGrounded);
 
         if (rb.velocity.y <= 0.0f)
         {
