@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator animator;
+    public SpriteRenderer spriteRend;
 
     [SerializeField]
     private float movementSpeed;
@@ -209,6 +211,7 @@ public class PlayerController : MonoBehaviour
             newVelocity.Set(movementSpeed * xInput, rb.velocity.y);
             rb.velocity = newVelocity;
         }
+        animator.SetFloat("Speed", Mathf.Abs(movementSpeed * xInput));
 
     }
 
