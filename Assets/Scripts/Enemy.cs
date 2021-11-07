@@ -105,13 +105,16 @@ public class Enemy : MonoBehaviour
 
     void OnMouseDown()
     {
-        // if you click on birb, birb stops moving
-        StopCoroutine("Act");
-        canAct = false;
-        active = false;
-        
-        // disable birb collider so it cant steal your brush
-        GetComponent<Collider2D>().enabled = false;
-        GetComponent<SpriteRenderer>().color = Color.yellow;
+        // need brush to paint birds
+        if (this.active && player.canPaint){
+            // if you click on birb, birb stops moving
+            StopCoroutine("Act");
+            canAct = false;
+            active = false;
+            
+            // disable birb collider so it cant steal your brush
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<SpriteRenderer>().color = Color.yellow;
+        }
     }
 }
