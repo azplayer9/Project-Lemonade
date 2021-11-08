@@ -8,25 +8,26 @@ public class TitleScreen : MonoBehaviour
 {
     public Button startButton;
     public GameObject mainMenu;
-    public GameObject settingsObj;
+    public GameObject credits;
     public Animation fade;
 
     // Start is called before the first frame update
     void Start()
     {
         //settingsObj = GameObject.Find("SettingsMenu");
-        mainMenu = GameObject.Find("MainScreen");
-        fade = GameObject.Find("Fade").GetComponent<Animation>();
-
-        if (settingsObj) settingsObj.SetActive(false);
+        //mainMenu = GameObject.Find("MainScreen");
+        //fade = GameObject.Find("Fade").GetComponent<Animation>();
+        
+        if (mainMenu) mainMenu.SetActive(true);
+        if (credits) credits.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape) && settingsObj.activeSelf)
+        if(Input.GetKeyDown(KeyCode.Escape) && credits.activeSelf)
         {
-            HideSettings();
+            HideCredits();
         }
         
     }
@@ -41,16 +42,16 @@ public class TitleScreen : MonoBehaviour
     }
 
     // toggle settings
-    public void ShowSettings()
+    public void ShowCredits()
     {
-        settingsObj.SetActive(true);
+        credits.SetActive(true);
         mainMenu.SetActive(false);
         
     }
 
-    public void HideSettings()
+    public void HideCredits()
     {
-        settingsObj.SetActive(false);
+        credits.SetActive(false);
         mainMenu.SetActive(true);
     }
 
