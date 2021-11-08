@@ -67,52 +67,9 @@ public class Player : MonoBehaviour
         else if (col.gameObject.tag == "Enemy")
         {
             Enemy other = col.gameObject.GetComponent<Enemy>();
-
             
-            // stun bird if invincible
-            if(invincible)
-            {            
-                // stun + stop birb
-                other.stunned = true;
-                other.moving = false;
-            }
-            // take brush back if bird has brush and is not invincible 
-            if (other.hasBrush && !other.invincible) 
-            {
-                // take brush back
-                SetInvincible();
-
-                other.hasBrush = false;
-                other.stunned = true;
-                other.moving = false;
-                
-                other.GetComponent<SpriteRenderer>().color = Color.white;
-
-                canPaint = true;
-            }
-            // lose brush if bird is not stunned and you are not invincible
-            else if (canPaint && !other.stunned && !invincible)
-            {
-                canPaint = false;
-
-                other.SetInvincible();
-                other.hasBrush = true;
-                other.GetComponent<SpriteRenderer>().color = Color.red;
-                
-                other.Act();
-            }
-
-        }
-    }
-
-    public IEnumerator SetInvincible()
-    {
-        if (invincible == false){
-            invincible = true;
-
-            yield return new WaitForSeconds(3.0f);
-
-            invincible = false;
+            other.active = true; // set bird to active if in the zone
+            other.GetComponent<Animator>().Play("flap");
         }
     }
 }
