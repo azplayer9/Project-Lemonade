@@ -69,6 +69,10 @@ public class PlayerController : MonoBehaviour
         SlopeCheck();
         ApplyMovement();
         animator.SetFloat("yVelocity", rb.velocity.y);
+        if (rb.velocity.y < -2f)
+        {
+            SoundManager.PlaySound("Glide");
+        }
     }
 
     private void CheckInput()
@@ -114,6 +118,7 @@ public class PlayerController : MonoBehaviour
         if (other.transform.tag == "Endgame")
         {
             Debug.Log("END");
+            SoundManager.PlaySound("Victory");
             SceneManager.LoadScene("Main Menu");
         }
     }
@@ -228,6 +233,10 @@ public class PlayerController : MonoBehaviour
             rb.velocity = newVelocity;
         }
         animator.SetFloat("Speed", Mathf.Abs(movementSpeed * xInput));
+        if (isGrounded && rb.velocity.x > 1)
+        {
+            //SoundManager.PlaySound("Walk");
+        }
         //SoundManager.PlaySound("Walk");
 
     }

@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip GlideSound,JumpSound,WalkSound;
+    public static AudioClip VictorySound, JumpSound,WalkSound;
     static AudioSource audioSrc;
     // Start is called before the first frame update
     void Start()
     {
         audioSrc = GetComponent<AudioSource>();
-        GlideSound = Resources.Load<AudioClip>("GlideAudio");
+        VictorySound = Resources.Load<AudioClip>("VictoryAudio");
         JumpSound = Resources.Load<AudioClip>("JumpAudio");
         WalkSound = Resources.Load<AudioClip>("WalkAudio");
     }
@@ -23,18 +23,20 @@ public class SoundManager : MonoBehaviour
 
     public static void PlaySound(string act)
     {
-
-
-        switch (act)
+        if (!audioSrc.isPlaying)
         {
-            case "Jump":
-                audioSrc.PlayOneShot(JumpSound);
-                break;
-            case "Walk":
-                audioSrc.PlayOneShot(WalkSound, 1.0f) ;
-                break;
+
+            switch (act)
+            {
+                case "Jump":
+                    audioSrc.PlayOneShot(JumpSound);
+                    break;
+                case "Victory":
+                    audioSrc.PlayOneShot(VictorySound);
+                    break;
 
 
+            }
         }
     }
 }
