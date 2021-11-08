@@ -87,6 +87,7 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
             animator.SetBool("Jump", true);
+            SoundManager.PlaySound("Jump");
         }
 
     }
@@ -203,11 +204,13 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("This one");
             newVelocity.Set(movementSpeed * xInput, 0.0f);
             rb.velocity = newVelocity;
+            //SoundManager.PlaySound("Walk");
         }
         else if (isGrounded && isOnSlope && canWalkOnSlope && !isJumping) //If on slope
         {
             newVelocity.Set(movementSpeed * slopeNormalPerp.x * -xInput, movementSpeed * slopeNormalPerp.y * -xInput);
             rb.velocity = newVelocity;
+            //SoundManager.PlaySound("Walk");
         }
         else if (!isGrounded) //If in air
         {
@@ -215,6 +218,7 @@ public class PlayerController : MonoBehaviour
             rb.velocity = newVelocity;
         }
         animator.SetFloat("Speed", Mathf.Abs(movementSpeed * xInput));
+        //SoundManager.PlaySound("Walk");
 
     }
 
