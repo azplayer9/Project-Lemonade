@@ -4074,6 +4074,18 @@ PrefabInstance:
       propertyPath: parallaxEffectMultiplier.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7481317859507739913, guid: 542b74ce170168a4cb62232e815b6166, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481317859507739913, guid: 542b74ce170168a4cb62232e815b6166, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7481317859507739913, guid: 542b74ce170168a4cb62232e815b6166, type: 3}
+      propertyPath: m_Color.r
+      value: 0.17715669
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 542b74ce170168a4cb62232e815b6166, type: 3}
 --- !u!1001 &777815435
